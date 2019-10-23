@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LegalRegulOffer_TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Opportunity">
+          <Key>
+            <PropertyRef Name="OpportunityId" />
+          </Key>
+          <Property Name="OpportunityId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="OpportunityNm" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryKey" Type="varchar" MaxLength="3" />
+          <Property Name="SalesCaptureDirectorNm" Type="varchar" MaxLength="100" />
+          <Property Name="OperatingUnitCd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ROStageCd" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="MMSStatusCd" Type="varchar" MaxLength="20" />
+          <Property Name="OfferingsTxt" Type="varchar" MaxLength="200" />
+          <Property Name="ContractExtensionFl" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ParentOpportunityId" Type="varchar" MaxLength="10" />
+          <Property Name="InitGoLiveDt" Type="date" />
+          <Property Name="ServiceGroupNm" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="SubCSGNm" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IndustrySegmentCd" Type="varchar" MaxLength="6" />
+          <Property Name="ExpectContractSignQtr" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NewOfferingInd" Type="bit" />
+          <Property Name="ArtificialIntelligenceInd" Type="bit" />
+          <Property Name="CloudInd" Type="bit" />
+          <Property Name="AutomationInd" Type="bit" />
+          <Property Name="ROStatusCd" Type="varchar" MaxLength="6" />
+          <Property Name="OSReasonCd" Type="varchar" MaxLength="6" />
+          <Property Name="CommentTxt" Type="nvarchar" MaxLength="255" />
+          <Property Name="TargetDt" Type="date" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDttm" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateDttm" Type="datetime" Nullable="false" />
+          <Property Name="FinancialClientNm" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerRelationshipNbr" Type="varchar" MaxLength="10" />
+          <Property Name="CustomerRelationshipNm" Type="varchar" MaxLength="100" />
+          <Property Name="MMSCreatedDateTime" Type="datetime" />
+          <Property Name="IsStandardInd" Type="bit" />
+          <Property Name="FinancialCustomerNbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="AllinScopeInd" Type="bit" />
+          <Property Name="RRSCommentTxt" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ArchiveInd" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Opportunity_Opportunity">
+          <End Role="Opportunity" Type="Self.Opportunity" Multiplicity="1" />
+          <End Role="Opportunity1" Type="Self.Opportunity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Opportunity">
+              <PropertyRef Name="OpportunityId" />
+            </Principal>
+            <Dependent Role="Opportunity1">
+              <PropertyRef Name="OpportunityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LegalRegulOffer_TestModelStoreContainer">
+          <EntitySet Name="Opportunity" EntityType="Self.Opportunity" Schema="ro" store:Type="Tables" />
+          <AssociationSet Name="FK_Opportunity_Opportunity" Association="Self.FK_Opportunity_Opportunity">
+            <End Role="Opportunity" EntitySet="Opportunity" />
+            <End Role="Opportunity1" EntitySet="Opportunity" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LegalRegulOffer_TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Opportunity">
+          <Key>
+            <PropertyRef Name="OpportunityId" />
+          </Key>
+          <Property Name="OpportunityId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OpportunityNm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryKey" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="SalesCaptureDirectorNm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OperatingUnitCd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ROStageCd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MMSStatusCd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OfferingsTxt" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractExtensionFl" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentOpportunityId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="InitGoLiveDt" Type="DateTime" Precision="0" />
+          <Property Name="ServiceGroupNm" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubCSGNm" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IndustrySegmentCd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="ExpectContractSignQtr" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NewOfferingInd" Type="Boolean" />
+          <Property Name="ArtificialIntelligenceInd" Type="Boolean" />
+          <Property Name="CloudInd" Type="Boolean" />
+          <Property Name="AutomationInd" Type="Boolean" />
+          <Property Name="ROStatusCd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="OSReasonCd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="CommentTxt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TargetDt" Type="DateTime" Precision="0" />
+          <Property Name="CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDttm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdateDttm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FinancialClientNm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerRelationshipNbr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerRelationshipNm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MMSCreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsStandardInd" Type="Boolean" />
+          <Property Name="FinancialCustomerNbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AllinScopeInd" Type="Boolean" />
+          <Property Name="RRSCommentTxt" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ArchiveInd" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Opportunity1" Relationship="Self.FK_Opportunity_Opportunity" FromRole="Opportunity" ToRole="Opportunity1" />
+          <NavigationProperty Name="Opportunity2" Relationship="Self.FK_Opportunity_Opportunity" FromRole="Opportunity1" ToRole="Opportunity" />
+        </EntityType>
+        <Association Name="FK_Opportunity_Opportunity">
+          <End Role="Opportunity" Type="Self.Opportunity" Multiplicity="1" />
+          <End Role="Opportunity1" Type="Self.Opportunity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Opportunity">
+              <PropertyRef Name="OpportunityId" />
+            </Principal>
+            <Dependent Role="Opportunity1">
+              <PropertyRef Name="OpportunityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Opportunities" EntityType="Self.Opportunity" />
+          <AssociationSet Name="FK_Opportunity_Opportunity" Association="Self.FK_Opportunity_Opportunity">
+            <End Role="Opportunity" EntitySet="Opportunities" />
+            <End Role="Opportunity1" EntitySet="Opportunities" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LegalRegulOffer_TestModelStoreContainer" CdmEntityContainer="Entities1">
+          <EntitySetMapping Name="Opportunities">
+            <EntityTypeMapping TypeName="LegalRegulOffer_TestModel.Opportunity">
+              <MappingFragment StoreEntitySet="Opportunity">
+                <ScalarProperty Name="OpportunityId" ColumnName="OpportunityId" />
+                <ScalarProperty Name="OpportunityNm" ColumnName="OpportunityNm" />
+                <ScalarProperty Name="CountryKey" ColumnName="CountryKey" />
+                <ScalarProperty Name="SalesCaptureDirectorNm" ColumnName="SalesCaptureDirectorNm" />
+                <ScalarProperty Name="OperatingUnitCd" ColumnName="OperatingUnitCd" />
+                <ScalarProperty Name="ROStageCd" ColumnName="ROStageCd" />
+                <ScalarProperty Name="MMSStatusCd" ColumnName="MMSStatusCd" />
+                <ScalarProperty Name="OfferingsTxt" ColumnName="OfferingsTxt" />
+                <ScalarProperty Name="ContractExtensionFl" ColumnName="ContractExtensionFl" />
+                <ScalarProperty Name="ParentOpportunityId" ColumnName="ParentOpportunityId" />
+                <ScalarProperty Name="InitGoLiveDt" ColumnName="InitGoLiveDt" />
+                <ScalarProperty Name="ServiceGroupNm" ColumnName="ServiceGroupNm" />
+                <ScalarProperty Name="SubCSGNm" ColumnName="SubCSGNm" />
+                <ScalarProperty Name="IndustrySegmentCd" ColumnName="IndustrySegmentCd" />
+                <ScalarProperty Name="ExpectContractSignQtr" ColumnName="ExpectContractSignQtr" />
+                <ScalarProperty Name="NewOfferingInd" ColumnName="NewOfferingInd" />
+                <ScalarProperty Name="ArtificialIntelligenceInd" ColumnName="ArtificialIntelligenceInd" />
+                <ScalarProperty Name="CloudInd" ColumnName="CloudInd" />
+                <ScalarProperty Name="AutomationInd" ColumnName="AutomationInd" />
+                <ScalarProperty Name="ROStatusCd" ColumnName="ROStatusCd" />
+                <ScalarProperty Name="OSReasonCd" ColumnName="OSReasonCd" />
+                <ScalarProperty Name="CommentTxt" ColumnName="CommentTxt" />
+                <ScalarProperty Name="TargetDt" ColumnName="TargetDt" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateDttm" ColumnName="CreateDttm" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateDttm" ColumnName="UpdateDttm" />
+                <ScalarProperty Name="FinancialClientNm" ColumnName="FinancialClientNm" />
+                <ScalarProperty Name="CustomerRelationshipNbr" ColumnName="CustomerRelationshipNbr" />
+                <ScalarProperty Name="CustomerRelationshipNm" ColumnName="CustomerRelationshipNm" />
+                <ScalarProperty Name="MMSCreatedDateTime" ColumnName="MMSCreatedDateTime" />
+                <ScalarProperty Name="IsStandardInd" ColumnName="IsStandardInd" />
+                <ScalarProperty Name="FinancialCustomerNbr" ColumnName="FinancialCustomerNbr" />
+                <ScalarProperty Name="AllinScopeInd" ColumnName="AllinScopeInd" />
+                <ScalarProperty Name="RRSCommentTxt" ColumnName="RRSCommentTxt" />
+                <ScalarProperty Name="ArchiveInd" ColumnName="ArchiveInd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

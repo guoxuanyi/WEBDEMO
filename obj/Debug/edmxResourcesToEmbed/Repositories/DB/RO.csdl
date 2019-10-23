@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LegalRegulOffer_TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Opportunity">
+    <Key>
+      <PropertyRef Name="OpportunityId" />
+    </Key>
+    <Property Name="OpportunityId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OpportunityNm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CountryKey" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="SalesCaptureDirectorNm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OperatingUnitCd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ROStageCd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MMSStatusCd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OfferingsTxt" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractExtensionFl" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ParentOpportunityId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="InitGoLiveDt" Type="DateTime" Precision="0" />
+    <Property Name="ServiceGroupNm" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubCSGNm" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IndustrySegmentCd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="ExpectContractSignQtr" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NewOfferingInd" Type="Boolean" />
+    <Property Name="ArtificialIntelligenceInd" Type="Boolean" />
+    <Property Name="CloudInd" Type="Boolean" />
+    <Property Name="AutomationInd" Type="Boolean" />
+    <Property Name="ROStatusCd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="OSReasonCd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="CommentTxt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="TargetDt" Type="DateTime" Precision="0" />
+    <Property Name="CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateDttm" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdateDttm" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FinancialClientNm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerRelationshipNbr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerRelationshipNm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MMSCreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsStandardInd" Type="Boolean" />
+    <Property Name="FinancialCustomerNbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AllinScopeInd" Type="Boolean" />
+    <Property Name="RRSCommentTxt" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ArchiveInd" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Opportunity1" Relationship="Self.FK_Opportunity_Opportunity" FromRole="Opportunity" ToRole="Opportunity1" />
+    <NavigationProperty Name="Opportunity2" Relationship="Self.FK_Opportunity_Opportunity" FromRole="Opportunity1" ToRole="Opportunity" />
+  </EntityType>
+  <Association Name="FK_Opportunity_Opportunity">
+    <End Role="Opportunity" Type="Self.Opportunity" Multiplicity="1" />
+    <End Role="Opportunity1" Type="Self.Opportunity" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Opportunity">
+        <PropertyRef Name="OpportunityId" />
+      </Principal>
+      <Dependent Role="Opportunity1">
+        <PropertyRef Name="OpportunityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Opportunities" EntityType="Self.Opportunity" />
+    <AssociationSet Name="FK_Opportunity_Opportunity" Association="Self.FK_Opportunity_Opportunity">
+      <End Role="Opportunity" EntitySet="Opportunities" />
+      <End Role="Opportunity1" EntitySet="Opportunities" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

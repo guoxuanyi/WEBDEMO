@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LegalRegulOffer_TestModelStoreContainer" CdmEntityContainer="Entities1">
+    <EntitySetMapping Name="Opportunities">
+      <EntityTypeMapping TypeName="LegalRegulOffer_TestModel.Opportunity">
+        <MappingFragment StoreEntitySet="Opportunity">
+          <ScalarProperty Name="OpportunityId" ColumnName="OpportunityId" />
+          <ScalarProperty Name="OpportunityNm" ColumnName="OpportunityNm" />
+          <ScalarProperty Name="CountryKey" ColumnName="CountryKey" />
+          <ScalarProperty Name="SalesCaptureDirectorNm" ColumnName="SalesCaptureDirectorNm" />
+          <ScalarProperty Name="OperatingUnitCd" ColumnName="OperatingUnitCd" />
+          <ScalarProperty Name="ROStageCd" ColumnName="ROStageCd" />
+          <ScalarProperty Name="MMSStatusCd" ColumnName="MMSStatusCd" />
+          <ScalarProperty Name="OfferingsTxt" ColumnName="OfferingsTxt" />
+          <ScalarProperty Name="ContractExtensionFl" ColumnName="ContractExtensionFl" />
+          <ScalarProperty Name="ParentOpportunityId" ColumnName="ParentOpportunityId" />
+          <ScalarProperty Name="InitGoLiveDt" ColumnName="InitGoLiveDt" />
+          <ScalarProperty Name="ServiceGroupNm" ColumnName="ServiceGroupNm" />
+          <ScalarProperty Name="SubCSGNm" ColumnName="SubCSGNm" />
+          <ScalarProperty Name="IndustrySegmentCd" ColumnName="IndustrySegmentCd" />
+          <ScalarProperty Name="ExpectContractSignQtr" ColumnName="ExpectContractSignQtr" />
+          <ScalarProperty Name="NewOfferingInd" ColumnName="NewOfferingInd" />
+          <ScalarProperty Name="ArtificialIntelligenceInd" ColumnName="ArtificialIntelligenceInd" />
+          <ScalarProperty Name="CloudInd" ColumnName="CloudInd" />
+          <ScalarProperty Name="AutomationInd" ColumnName="AutomationInd" />
+          <ScalarProperty Name="ROStatusCd" ColumnName="ROStatusCd" />
+          <ScalarProperty Name="OSReasonCd" ColumnName="OSReasonCd" />
+          <ScalarProperty Name="CommentTxt" ColumnName="CommentTxt" />
+          <ScalarProperty Name="TargetDt" ColumnName="TargetDt" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="CreateDttm" ColumnName="CreateDttm" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="UpdateDttm" ColumnName="UpdateDttm" />
+          <ScalarProperty Name="FinancialClientNm" ColumnName="FinancialClientNm" />
+          <ScalarProperty Name="CustomerRelationshipNbr" ColumnName="CustomerRelationshipNbr" />
+          <ScalarProperty Name="CustomerRelationshipNm" ColumnName="CustomerRelationshipNm" />
+          <ScalarProperty Name="MMSCreatedDateTime" ColumnName="MMSCreatedDateTime" />
+          <ScalarProperty Name="IsStandardInd" ColumnName="IsStandardInd" />
+          <ScalarProperty Name="FinancialCustomerNbr" ColumnName="FinancialCustomerNbr" />
+          <ScalarProperty Name="AllinScopeInd" ColumnName="AllinScopeInd" />
+          <ScalarProperty Name="RRSCommentTxt" ColumnName="RRSCommentTxt" />
+          <ScalarProperty Name="ArchiveInd" ColumnName="ArchiveInd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

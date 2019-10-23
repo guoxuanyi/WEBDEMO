@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LegalRegulOffer_TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Opportunity">
+    <Key>
+      <PropertyRef Name="OpportunityId" />
+    </Key>
+    <Property Name="OpportunityId" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="OpportunityNm" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CountryKey" Type="varchar" MaxLength="3" />
+    <Property Name="SalesCaptureDirectorNm" Type="varchar" MaxLength="100" />
+    <Property Name="OperatingUnitCd" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ROStageCd" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="MMSStatusCd" Type="varchar" MaxLength="20" />
+    <Property Name="OfferingsTxt" Type="varchar" MaxLength="200" />
+    <Property Name="ContractExtensionFl" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ParentOpportunityId" Type="varchar" MaxLength="10" />
+    <Property Name="InitGoLiveDt" Type="date" />
+    <Property Name="ServiceGroupNm" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="SubCSGNm" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IndustrySegmentCd" Type="varchar" MaxLength="6" />
+    <Property Name="ExpectContractSignQtr" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="NewOfferingInd" Type="bit" />
+    <Property Name="ArtificialIntelligenceInd" Type="bit" />
+    <Property Name="CloudInd" Type="bit" />
+    <Property Name="AutomationInd" Type="bit" />
+    <Property Name="ROStatusCd" Type="varchar" MaxLength="6" />
+    <Property Name="OSReasonCd" Type="varchar" MaxLength="6" />
+    <Property Name="CommentTxt" Type="nvarchar" MaxLength="255" />
+    <Property Name="TargetDt" Type="date" />
+    <Property Name="CreateUserId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateDttm" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdateDttm" Type="datetime" Nullable="false" />
+    <Property Name="FinancialClientNm" Type="varchar" MaxLength="100" />
+    <Property Name="CustomerRelationshipNbr" Type="varchar" MaxLength="10" />
+    <Property Name="CustomerRelationshipNm" Type="varchar" MaxLength="100" />
+    <Property Name="MMSCreatedDateTime" Type="datetime" />
+    <Property Name="IsStandardInd" Type="bit" />
+    <Property Name="FinancialCustomerNbr" Type="nvarchar" MaxLength="20" />
+    <Property Name="AllinScopeInd" Type="bit" />
+    <Property Name="RRSCommentTxt" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ArchiveInd" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Opportunity_Opportunity">
+    <End Role="Opportunity" Type="Self.Opportunity" Multiplicity="1" />
+    <End Role="Opportunity1" Type="Self.Opportunity" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Opportunity">
+        <PropertyRef Name="OpportunityId" />
+      </Principal>
+      <Dependent Role="Opportunity1">
+        <PropertyRef Name="OpportunityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LegalRegulOffer_TestModelStoreContainer">
+    <EntitySet Name="Opportunity" EntityType="Self.Opportunity" Schema="ro" store:Type="Tables" />
+    <AssociationSet Name="FK_Opportunity_Opportunity" Association="Self.FK_Opportunity_Opportunity">
+      <End Role="Opportunity" EntitySet="Opportunity" />
+      <End Role="Opportunity1" EntitySet="Opportunity" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
