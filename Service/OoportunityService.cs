@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Web_Api_Demo.Models.DTO;
 using Web_Api_Demo.Repositories;
+using Web_Api_Demo.Repositories.DB;
 using Web_Api_Demo.Repositories.Interface;
 using Web_Api_Demo.Service.Interface;
 
@@ -19,7 +21,8 @@ namespace Web_Api_Demo.Service
         }
         public bool AddOpportunity(OpportunityDTO opp)
         {
-            throw new NotImplementedException();
+            Opportunity dbOpp = Mapper.Map<OpportunityDTO, Opportunity>(opp);
+            return this._Repositories.AddOpportunity(dbOpp);
         }
 
         public bool DeleteOpportunities(string OppId)
@@ -37,7 +40,6 @@ namespace Web_Api_Demo.Service
                         OpportunityNm = item.OpportunityNm,
                         SubCSGNm = item.SubCSGNm,
                         ROStageCd = item.ROStageCd,
-                        UpdateDttm = item.UpdateDttm,
                     }).ToList();
         }
 
@@ -46,12 +48,12 @@ namespace Web_Api_Demo.Service
             var result = this._Repositories.GetOpportunityNm(OppId);
             return (from item in result
                     orderby item
-                    select item.ToUpper()).ToList(); 
+                    select item.ToUpper()).ToList();
         }
 
         public bool UpdateOpportunity(string ROCd, string OppId)
         {
-            return this._Repositories.UpdateOpportunity(ROCd,OppId);
+            return this._Repositories.UpdateOpportunity(ROCd, OppId);
         }
     }
 }

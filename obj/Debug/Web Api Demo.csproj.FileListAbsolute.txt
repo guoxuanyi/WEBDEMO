@@ -1,4 +1,3 @@
-C:\Users\xuanyi.guo\source\repos\Web Api Demo\obj\Debug\Web Api Demo.csprojAssemblyReference.cache
 C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\Web Api Demo.dll.config
 C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\Web Api Demo.dll
 C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\Web Api Demo.pdb
@@ -83,3 +82,9 @@ C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\Microsoft.CodeDom.Providers.Do
 C:\Users\xuanyi.guo\source\repos\Web Api Demo\obj\Debug\Web Api Demo.csproj.CopyComplete
 C:\Users\xuanyi.guo\source\repos\Web Api Demo\obj\Debug\Web Api Demo.dll
 C:\Users\xuanyi.guo\source\repos\Web Api Demo\obj\Debug\Web Api Demo.pdb
+C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\Swashbuckle.Core.dll
+C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\WebActivatorEx.dll
+C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\AutoMapper.dll
+C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\AutoMapper.pdb
+C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\AutoMapper.xml
+C:\Users\xuanyi.guo\source\repos\Web Api Demo\obj\Debug\Web Api Demo.csprojAssemblyReference.cache

@@ -13,27 +13,47 @@ namespace Web_Api_Demo.Repositories
         private Entities1 context = new Entities1();
         public bool AddOpportunity(DB.Opportunity opp)
         {
-            throw new NotImplementedException();
+            var count = GetOpportunityCount(opp.OpportunityId);
+            StringBuilder sb = new StringBuilder(@"insert into ro.Opportunity(OpportunityId,OpportunityNm,
+                                                                              OperatingUnitCd,ROStageCd,
+                                                                              ContractExtensionFl,ServiceGroupNm,
+                                                                              SubCSGNm,ExpectContractSignQtr,
+                                                                              CreateUserId,CreateDttm,UpdateDttm,
+                                                                              ArchiveInd)
+                                                   values(@OpportunityId,@OpportunityNm,@OperatingUnitCd,@ROStageCd,
+                                                          @ContractExtensionFl,@ServiceGroupNm,@SubCSGNm,@ExpectContractSignQtr,
+                                                          @CreateUserId,getdate(),getdate(),@ArchiveInd)");
+            if (count == 0)
+            {
+                context.Database.ExecuteSqlCommand(sb.ToString(),
+                new SqlParameter("@OpportunityId", opp.OpportunityId),
+                new SqlParameter("@OpportunityNm", opp.OpportunityNm),
+                new SqlParameter("@OperatingUnitCd", opp.OperatingUnitCd),
+                new SqlParameter("@ROStageCd", opp.ROStageCd),
+                new SqlParameter("@ContractExtensionFl", opp.ContractExtensionFl),
+                new SqlParameter("@ServiceGroupNm", opp.ServiceGroupNm),
+                new SqlParameter("@SubCSGNm", opp.SubCSGNm),
+                new SqlParameter("@ExpectContractSignQtr", opp.ExpectContractSignQtr),
+                new SqlParameter("@CreateUserId", opp.CreateUserId),
+                new SqlParameter("@ArchiveInd", opp.ArchiveInd));
+                return true;
+            }
+            return false;
         }
 
         public bool DeleteOpportunities(string OppId)
         {
             StringBuilder sb = new StringBuilder(@"delete from ro.Opportunity 
                                                    where OpportunityId = @OpportunityId");
-            StringBuilder sb1 = new StringBuilder(@"select count(1) from ro.Opportunity
-                                                    where OpportunityId = @OpportunityId");
-            SqlParameter sqlParameter = new SqlParameter("@OpportunityId", OppId);
-            int count = Convert.ToInt32(context.Database.SqlQuery<int>(sb1.ToString(), sqlParameter));
-            if (count != 0)
+            var result = context.Database.ExecuteSqlCommand(sb.ToString(),
+                new SqlParameter("@OpportunityId", OppId));
+            if (result > 0)
             {
-                context.Database.ExecuteSqlCommand(sb.ToString(), sqlParameter);
                 context.SaveChanges();
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
+
         }
 
         public List<DB.Opportunity> GetOpportunities()
@@ -54,26 +74,23 @@ namespace Web_Api_Demo.Repositories
 
         public bool UpdateOpportunity(string ROCd, string OppId)
         {
-            StringBuilder sb = new StringBuilder(@"select count(*) from ro.Opportunity
-                                                    where OpportunityId= @OpportunityId
-                                                    and ROStageCd = @ROStageCd");
-
+            var count = GetOpportunityCount(OppId);
             StringBuilder sb1 = new StringBuilder(@"update ro.Opportunity set ROStageCd = @ROStageCd 
                                                    where OpportunityId= @OpportunityId");
-
-            SqlParameter sqlParameter1 = new SqlParameter("@ROStageCd", ROCd);
-            SqlParameter sqlParameter2 = new SqlParameter("@OpportunityId", OppId);
-            int count = Convert.ToInt32(context.Database.SqlQuery<int>(sb.ToString(), sqlParameter1, sqlParameter2));
-            if (count != 0)
+            if (count > 0)
             {
-                context.Database.ExecuteSqlCommand(sb1.ToString(), sqlParameter1, sqlParameter2);
-                context.SaveChanges();
+                var result = context.Database.ExecuteSqlCommand(sb1.ToString(),
+                new SqlParameter("@ROStageCd", ROCd),
+                new SqlParameter("@OpportunityId", OppId));
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
+        }
+
+        public int GetOpportunityCount(string OppId)
+        {
+            StringBuilder sb = new StringBuilder(@"select count(1) from ro.Opportunity where OpportunityId= @OpportunityId");
+            return context.Database.SqlQuery<int>(sb.ToString(), new SqlParameter("@OpportunityId", OppId)).First();
         }
     }
 }

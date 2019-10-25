@@ -9,12 +9,13 @@ namespace Web_Api_Demo.Models.DTO
     {
         public string OpportunityId { get; set; }
         public string OpportunityNm { get; set; }
+        public string OperatingUnitCd { get; set; }
+        public string ContractExtensionFl { get; set; }
+        public string ServiceGroupNm { get; set; }
+        public string ExpectContractSignQtr { get; set; }
         public string ROStageCd { get; set; }
-        public Nullable<System.DateTime> InitGoLiveDt { get; set; }
         public string SubCSGNm { get; set; }
-        public System.DateTime CreateDttm { get; set; }
-        public string UpdateUserId { get; set; }
-        public System.DateTime UpdateDttm { get; set; }
-
+        public string CreateUserId { get; set; }
+        public bool ArchiveInd { get; set; }
     }
 }
