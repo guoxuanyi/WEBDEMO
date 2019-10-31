@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using Web_Api_Demo.Models.DTO;
+using Web_Api_Demo.Models.Model;
 using Web_Api_Demo.Service;
 using Web_Api_Demo.Service.Interface;
 
@@ -11,12 +9,7 @@ namespace Web_Api_Demo.Controllers
 {
     public class OpportunityController : ApiController
     {
-        private IOoportunityService _OoportunityService;
-        public OpportunityController()
-        {
-            OoportunityService ooportunityService = new OoportunityService();
-            _OoportunityService = ooportunityService;
-        }
+        private readonly IOoportunityService _OoportunityService = new OoportunityService();
 
         private const string getOoportunities = "api/Ooportunity/getOoportunities";
         [HttpGet]
@@ -29,7 +22,7 @@ namespace Web_Api_Demo.Controllers
         private const string getOoportunityNm = "api/Ooportunity/getOoportunityNm";
         [HttpGet]
         [Route(getOoportunityNm)]
-        public List<string> GetOoportunityNm(string OppId)
+        public List<string> GetOoportunityNm([FromUri]string OppId)
         {
             return _OoportunityService.GetOpportunityNm(OppId);
         }
@@ -37,7 +30,7 @@ namespace Web_Api_Demo.Controllers
         private const string addOoportunity = "api/Ooportunity/addOoportunity";
         [HttpPut]
         [Route(addOoportunity)]
-        public bool AddOoportunity(OpportunityDTO opportunity)
+        public bool AddOoportunity([FromBody]OpportunityDTO opportunity)
         {
             return _OoportunityService.AddOpportunity(opportunity);
         }
@@ -45,7 +38,7 @@ namespace Web_Api_Demo.Controllers
         private const string deleteOoportunity = "api/Ooportunity/deleteOoportunity";
         [HttpDelete]
         [Route(deleteOoportunity)]
-        public bool DeleteOoportunity(string OppId)
+        public bool DeleteOoportunity([FromBody]string OppId)
         {
             return _OoportunityService.DeleteOpportunities(OppId);
         }
@@ -56,6 +49,14 @@ namespace Web_Api_Demo.Controllers
         public bool UpdateOoportunity(string ROCd, string OppId)
         {
             return _OoportunityService.UpdateOpportunity(ROCd, OppId);
+        }
+
+        private const string getOpportunityIdAndNm = "api/Ooportunity/getOpportunityIdAndNm";
+        [HttpGet]
+        [Route(getOpportunityIdAndNm)]
+        public List<OpportunityModel> GetOpportunityIdAndNm()
+        {
+            return _OoportunityService.GetOpportunityIdAndNm();
         }
     }
 }

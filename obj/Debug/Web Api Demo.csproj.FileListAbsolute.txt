@@ -87,4 +87,8 @@ C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\WebActivatorEx.dll
 C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\AutoMapper.dll
 C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\AutoMapper.pdb
 C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\AutoMapper.xml
+C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\Autofac.dll
+C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\Autofac.xml
+C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\Autofac.Integration.WebApi.dll
+C:\Users\xuanyi.guo\source\repos\Web Api Demo\bin\Autofac.Integration.WebApi.xml
 C:\Users\xuanyi.guo\source\repos\Web Api Demo\obj\Debug\Web Api Demo.csprojAssemblyReference.cache

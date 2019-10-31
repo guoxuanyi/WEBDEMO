@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
+using System.Xml.Linq;
 using Web_Api_Demo.Models.DTO;
+using Web_Api_Demo.Models.Model;
 using Web_Api_Demo.Repositories;
 using Web_Api_Demo.Repositories.DB;
 using Web_Api_Demo.Repositories.Interface;
@@ -13,12 +16,7 @@ namespace Web_Api_Demo.Service
 {
     public class OoportunityService : IOoportunityService
     {
-        private readonly IOpportunityRepositories _Repositories;
-        public OoportunityService()
-        {
-            OpportunityRepositories repositories = new OpportunityRepositories();
-            _Repositories = repositories;
-        }
+        private readonly IOpportunityRepositories _Repositories = new OpportunityRepositories();
         public bool AddOpportunity(OpportunityDTO opp)
         {
             Opportunity dbOpp = Mapper.Map<OpportunityDTO, Opportunity>(opp);
@@ -33,14 +31,20 @@ namespace Web_Api_Demo.Service
         public List<OpportunityDTO> GetOpportunities()
         {
             var result = this._Repositories.GetOpportunities();
-            return (from item in result
-                    select new OpportunityDTO
-                    {
-                        OpportunityId = item.OpportunityId,
-                        OpportunityNm = item.OpportunityNm,
-                        SubCSGNm = item.SubCSGNm,
-                        ROStageCd = item.ROStageCd,
-                    }).ToList();
+            var list = Mapper.Map<List<Opportunity>, List<OpportunityDTO>>(result);
+            Tools.CreateXml(list);
+            return list;
+        }
+
+        public List<OpportunityModel> GetOpportunityIdAndNm()
+        {
+            var list = this._Repositories.GetOpportunities()
+                .Select(s => new OpportunityModel
+                {
+                    OpportunityId = s.OpportunityId,
+                    OpportunityNm = s.OpportunityNm
+                }).ToList();
+            return list;
         }
 
         public List<string> GetOpportunityNm(string OppId)
