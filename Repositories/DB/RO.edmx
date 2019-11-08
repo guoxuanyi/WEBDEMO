@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LegalRegulOffer_TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="RO.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Opportunity">
           <Key>
             <PropertyRef Name="OpportunityId" />
@@ -16,7 +16,7 @@
           <Property Name="OperatingUnitCd" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ROStageCd" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="MMSStatusCd" Type="varchar" MaxLength="20" />
-          <Property Name="OfferingsTxt" Type="varchar" MaxLength="200" />
+          <Property Name="OfferingsTxt" Type="nvarchar" MaxLength="1000" />
           <Property Name="ContractExtensionFl" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="ParentOpportunityId" Type="varchar" MaxLength="10" />
           <Property Name="InitGoLiveDt" Type="date" />
@@ -58,7 +58,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LegalRegulOffer_TestModelStoreContainer">
+        <EntityContainer Name="ROStoreContainer">
           <EntitySet Name="Opportunity" EntityType="Self.Opportunity" Schema="ro" store:Type="Tables" />
           <AssociationSet Name="FK_Opportunity_Opportunity" Association="Self.FK_Opportunity_Opportunity">
             <End Role="Opportunity" EntitySet="Opportunity" />
@@ -69,7 +69,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="LegalRegulOffer_TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="RO" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Opportunity">
           <Key>
             <PropertyRef Name="OpportunityId" />
@@ -81,7 +81,7 @@
           <Property Name="OperatingUnitCd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ROStageCd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MMSStatusCd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="OfferingsTxt" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OfferingsTxt" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="ContractExtensionFl" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ParentOpportunityId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="InitGoLiveDt" Type="DateTime" Precision="0" />
@@ -125,7 +125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ROTest" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Opportunities" EntityType="Self.Opportunity" />
           <AssociationSet Name="FK_Opportunity_Opportunity" Association="Self.FK_Opportunity_Opportunity">
             <End Role="Opportunity" EntitySet="Opportunities" />
@@ -137,9 +137,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LegalRegulOffer_TestModelStoreContainer" CdmEntityContainer="Entities1">
+        <EntityContainerMapping StorageEntityContainer="ROStoreContainer" CdmEntityContainer="ROTest">
           <EntitySetMapping Name="Opportunities">
-            <EntityTypeMapping TypeName="LegalRegulOffer_TestModel.Opportunity">
+            <EntityTypeMapping TypeName="RO.Opportunity">
               <MappingFragment StoreEntitySet="Opportunity">
                 <ScalarProperty Name="OpportunityId" ColumnName="OpportunityId" />
                 <ScalarProperty Name="OpportunityNm" ColumnName="OpportunityNm" />

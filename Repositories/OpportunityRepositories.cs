@@ -10,7 +10,7 @@ namespace Web_Api_Demo.Repositories
 {
     public class OpportunityRepositories : IOpportunityRepositories
     {
-        private Entities1 context = new Entities1();
+        private ROTest context = new ROTest();
         public bool AddOpportunity(DB.Opportunity opp)
         {
             int result = 0;
@@ -64,11 +64,26 @@ namespace Web_Api_Demo.Repositories
 
         }
 
+        public List<Opportunity> GetNewAddOpportunity()
+        {
+            StringBuilder sb = new StringBuilder(@"select top (1) * from ro.Opportunity order by CreateDttm desc");
+            return context.Database.SqlQuery<Opportunity>(sb.ToString()).ToList();
+        }
+
         public List<DB.Opportunity> GetOpportunities()
         {
             StringBuilder sb = new StringBuilder("SELECT * FROM [ro].[Opportunity]");
             var result = context.Database.SqlQuery<DB.Opportunity>(sb.ToString()).ToList();
             return result;
+        }
+
+        public List<Opportunity> GetOpportunityByNm(string OppNm)
+        {
+            StringBuilder sb = new StringBuilder(@"SELECT [OpportunityId],[OpportunityNm] 
+                                                   FROM [ro].[Opportunity] 
+                                                   WHERE [OpportunityNm] LIKE %@OpportunityNm%");
+            return context.Database.SqlQuery<Opportunity>(sb.ToString(),
+                new SqlParameter("@OpportunityNm", OppNm)).ToList();
         }
 
         public List<string> GetOpportunityNm(string OppId)
@@ -80,13 +95,31 @@ namespace Web_Api_Demo.Repositories
                 new SqlParameter("@OpportunityId", OppId)).ToList();
         }
 
-        public bool UpdateOpportunity(string ROStageCd, string OpportunityId)
+        public bool UpdateOpportunity(Opportunity opp)
         {
-            StringBuilder sb1 = new StringBuilder(@"update ro.Opportunity set ROStageCd = @ROStageCd 
-                                                   where OpportunityId= @OpportunityId");
+            StringBuilder sb1 = new StringBuilder(@"update ro.Opportunity set 
+                                                    OpportunityNm = @OpportunityNm,
+                                                    OperatingUnitCd = @OperatingUnitCd,
+                                                    ROStageCd = @ROStageCd,
+                                                    ContractExtensionFl = @ContractExtensionFl,
+                                                    ServiceGroupNm = @ServiceGroupNm,
+                                                    SubCSGNm = @SubCSGNm,
+                                                    ExpectContractSignQtr = @ExpectContractSignQtr,
+                                                    CreateUserId = @CreateUserId,
+                                                    UpdateDttm = getdate(),
+                                                    ArchiveInd = @ArchiveInd 
+                                                    where OpportunityId = @OpportunityId");
             var result = context.Database.ExecuteSqlCommand(sb1.ToString(),
-                new SqlParameter("@ROStageCd", ROStageCd),
-                new SqlParameter("@OpportunityId", OpportunityId));
+                new SqlParameter("@OpportunityId", opp.OpportunityId),
+                new SqlParameter("@OpportunityNm", opp.OpportunityNm),
+                new SqlParameter("@OperatingUnitCd", opp.OperatingUnitCd),
+                new SqlParameter("@ROStageCd", opp.ROStageCd),
+                new SqlParameter("@ContractExtensionFl", opp.ContractExtensionFl),
+                new SqlParameter("@ServiceGroupNm", opp.ServiceGroupNm),
+                new SqlParameter("@SubCSGNm", opp.SubCSGNm),
+                new SqlParameter("@ExpectContractSignQtr", opp.ExpectContractSignQtr),
+                new SqlParameter("@CreateUserId", opp.CreateUserId),
+                new SqlParameter("@ArchiveInd", opp.ArchiveInd));
             if (result > 0)
             {
 

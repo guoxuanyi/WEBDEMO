@@ -10,8 +10,10 @@ namespace Web_Api_Demo.Repositories.Interface
     {
         List<string> GetOpportunityNm(string OppId);
         List<Opportunity> GetOpportunities();
+        List<Opportunity> GetOpportunityByNm(string OppNm);
         bool AddOpportunity(Opportunity opp);
-        bool UpdateOpportunity(string RC, string OppId);
+        bool UpdateOpportunity(Opportunity opp);
         bool DeleteOpportunities(string OppId);
+        List<Opportunity> GetNewAddOpportunity();
     }
 }

@@ -38,7 +38,7 @@ namespace Web_Api_Demo.Controllers
         private const string deleteOoportunity = "api/Ooportunity/deleteOoportunity";
         [HttpDelete]
         [Route(deleteOoportunity)]
-        public bool DeleteOoportunity([FromBody]string OppId)
+        public bool DeleteOoportunity([FromUri]string OppId)
         {
             return _OoportunityService.DeleteOpportunities(OppId);
         }
@@ -46,9 +46,9 @@ namespace Web_Api_Demo.Controllers
         private const string updateOoportunity = "api/Ooportunity/updateOoportunity";
         [HttpPost]
         [Route(updateOoportunity)]
-        public bool UpdateOoportunity(string ROCd, string OppId)
+        public bool UpdateOoportunity([FromBody]OpportunityDTO uOpp)
         {
-            return _OoportunityService.UpdateOpportunity(ROCd, OppId);
+            return _OoportunityService.UpdateOpportunity(uOpp);
         }
 
         private const string getOpportunityIdAndNm = "api/Ooportunity/getOpportunityIdAndNm";
@@ -57,6 +57,14 @@ namespace Web_Api_Demo.Controllers
         public List<OpportunityModel> GetOpportunityIdAndNm()
         {
             return _OoportunityService.GetOpportunityIdAndNm();
+        }
+
+        private const string getNewAddOpportunity = "api/Ooportunity/getNewAddOpportunity";
+        [HttpGet]
+        [Route(getNewAddOpportunity)]
+        public List<OpportunityDTO> GetNewAddOpportunity()
+        {
+            return _OoportunityService.GetNewAddOpportunity();
         }
     }
 }

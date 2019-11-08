@@ -28,12 +28,23 @@ namespace Web_Api_Demo.Service
             return this._Repositories.DeleteOpportunities(OppId);
         }
 
+        public List<OpportunityDTO> GetNewAddOpportunity()
+        {
+            var result = this._Repositories.GetNewAddOpportunity();
+            return Mapper.Map<List<Opportunity>, List<OpportunityDTO>>(result);
+        }
+
         public List<OpportunityDTO> GetOpportunities()
         {
             var result = this._Repositories.GetOpportunities();
             var list = Mapper.Map<List<Opportunity>, List<OpportunityDTO>>(result);
-            Tools.CreateXml(list);
             return list;
+        }
+
+        public List<OpportunityModel> GetOpportunitiesByNm(string OppNm)
+        {
+            var result = this._Repositories.GetOpportunityByNm(OppNm);
+            return Mapper.Map<List<Opportunity>,List<OpportunityModel>>(result);
         }
 
         public List<OpportunityModel> GetOpportunityIdAndNm()
@@ -55,9 +66,10 @@ namespace Web_Api_Demo.Service
                     select item.ToUpper()).ToList();
         }
 
-        public bool UpdateOpportunity(string ROCd, string OppId)
+        public bool UpdateOpportunity(OpportunityDTO opp)
         {
-            return this._Repositories.UpdateOpportunity(ROCd, OppId);
+            Opportunity dbOpp = Mapper.Map<OpportunityDTO, Opportunity>(opp);
+            return this._Repositories.UpdateOpportunity(dbOpp);
         }
     }
 }

@@ -13,10 +13,10 @@ namespace Web_Api_Demo.Repositories.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities1 : DbContext
+    public partial class ROTest : DbContext
     {
-        public Entities1()
-            : base("name=Entities1")
+        public ROTest()
+            : base("name=ROTest")
         {
         }
     

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="LegalRegulOffer_TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="RO" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Opportunity">
     <Key>
       <PropertyRef Name="OpportunityId" />
@@ -11,7 +11,7 @@
     <Property Name="OperatingUnitCd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ROStageCd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MMSStatusCd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="OfferingsTxt" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OfferingsTxt" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Name="ContractExtensionFl" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ParentOpportunityId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="InitGoLiveDt" Type="DateTime" Precision="0" />
@@ -55,7 +55,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="ROTest" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Opportunities" EntityType="Self.Opportunity" />
     <AssociationSet Name="FK_Opportunity_Opportunity" Association="Self.FK_Opportunity_Opportunity">
       <End Role="Opportunity" EntitySet="Opportunities" />

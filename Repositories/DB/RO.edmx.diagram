@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="01c1905f80a145bea842ab5ea56fa7ef" Name="Diagram1">
-        <EntityTypeShape EntityType="LegalRegulOffer_TestModel.Opportunity" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="LegalRegulOffer_TestModel.FK_Opportunity_Opportunity" ManuallyRouted="false" />
+      <Diagram DiagramId="4b35dd2e154048d0afdd30fa8c31f306" Name="Diagram1">
+        <EntityTypeShape EntityType="RO.Opportunity" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="RO.FK_Opportunity_Opportunity" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

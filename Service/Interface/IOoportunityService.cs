@@ -8,9 +8,11 @@ namespace Web_Api_Demo.Service.Interface
     {
         List<OpportunityDTO> GetOpportunities();
         List<string> GetOpportunityNm(string OppId);
+        List<OpportunityModel> GetOpportunitiesByNm(string OppNm);
         bool AddOpportunity(OpportunityDTO opp);
-        bool UpdateOpportunity(string ROCd, string OppId);
+        bool UpdateOpportunity(OpportunityDTO uOpp);
         bool DeleteOpportunities(string OppId);
         List<OpportunityModel> GetOpportunityIdAndNm();
+        List<OpportunityDTO> GetNewAddOpportunity();
     }
 }

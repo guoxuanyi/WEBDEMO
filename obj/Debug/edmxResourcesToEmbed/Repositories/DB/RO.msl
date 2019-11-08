@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="LegalRegulOffer_TestModelStoreContainer" CdmEntityContainer="Entities1">
+  <EntityContainerMapping StorageEntityContainer="ROStoreContainer" CdmEntityContainer="ROTest">
     <EntitySetMapping Name="Opportunities">
-      <EntityTypeMapping TypeName="LegalRegulOffer_TestModel.Opportunity">
+      <EntityTypeMapping TypeName="RO.Opportunity">
         <MappingFragment StoreEntitySet="Opportunity">
           <ScalarProperty Name="OpportunityId" ColumnName="OpportunityId" />
           <ScalarProperty Name="OpportunityNm" ColumnName="OpportunityNm" />
